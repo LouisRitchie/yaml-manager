@@ -4,7 +4,7 @@
   "description": "",
   "main": "gulpfile.babel.js",
   "scripts": {
-		"client": "cross-env NODE_ENV=development node dev-server",
+    "client": "cross-env NODE_ENV=development node dev-server",
     "build": "cross-env NODE_ENV=production webpack --config internals/webpack/webpack.config.prod.babel.js --color -p",
     "prebuild": "rimraf ./public/*",
     "server": "gulp server",
@@ -14,7 +14,7 @@
   },
   "author": "Melvin Soldia <melvinsoldia@gmail.com> (http://twitter.com/soldio)",
   "license": "ISC",
-	"devDependencies": {
+  "devDependencies": {
     "babel-eslint": "^6.0.4",
     "babel-loader": "^6.2.4",
     "babel-preset-es2015": "^6.9.0",
@@ -38,6 +38,7 @@
     "gulp": "^3.9.1",
     "html-loader": "^0.4.3",
     "html-webpack-plugin": "^2.19.0",
+    "immutable": "^3.8.1",
     "ip": "^1.1.3",
     "json-loader": "^0.5.4",
     "ngrok": "^2.2.0",

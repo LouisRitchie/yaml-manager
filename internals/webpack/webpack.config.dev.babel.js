@@ -19,8 +19,8 @@ module.exports = require('./webpack.config.base.babel')({
 
 	// don't use hashes in dev mode for better performance
 	output: {
-		filename: '[name].js',
-		chunkFilename: '[name].chunk.js',
+		filename: 'yaml-manager.js',
+		chunkFilename: 'yaml-manager.chunk.js',
 	},
 
 	// Load the CSS in a style tag in development
