@@ -1,0 +1,47 @@
+hash: d45aacbe0d0bb4ac9fc860da81aba4df5ccd86555c45129a715bb5f27f7599b5
+updated: 2016-06-09T23:53:25.088151182+08:00
+imports:
+- name: github.com/dgrijalva/jwt-go
+  version: c04502f106d7c5b3fae17c5da49a1bbdd3006b3c
+- name: github.com/klauspost/compress
+  version: 14eb9c4951195779ecfbec34431a976de7335b0a
+  subpackages:
+  - flate
+  - gzip
+  - zlib
+- name: github.com/klauspost/cpuid
+  version: 09cded8978dc9e80714c4d85b0322337b0a1e5e0
+- name: github.com/klauspost/crc32
+  version: 19b0b332c9e4516a6370a0456e6182c3b5036720
+- name: github.com/labstack/echo
+  version: aea64ed5e5fe18d77011aa2a58769121788417f7
+  subpackages:
+  - engine/fasthttp
+  - middleware
+  - engine
+  - log
+- name: github.com/labstack/gommon
+  version: 722aa12d41c236ce78ff48eac1cafe0107ecdc9d
+  subpackages:
+  - log
+  - bytes
+  - color
+- name: github.com/mattn/go-colorable
+  version: 9056b7a9f2d1f2d96498d6d146acd1f9d5ed3d59
+- name: github.com/mattn/go-isatty
+  version: 56b76bdf51f7708750eac80fa38b952bb9f32639
+- name: github.com/mewben/config-echo
+  version: bd68349f8624a3b42e21fd1ed87736bf6284c8b8
+- name: github.com/valyala/fasthttp
+  version: 8f05edbec9fb5b0c7a4012ee746035a82e3e8bfb
+- name: github.com/valyala/fasttemplate
+  version: 3b874956e03f1636d171bda64b130f9135f42cff
+- name: golang.org/x/net
+  version: 3f122ce3dbbe488b7e6a8bdb26f41edec852a40b
+  subpackages:
+  - context
+- name: golang.org/x/sys
+  version: 076b546753157f758b316e59bcb51e6807c04057
+  subpackages:
+  - unix
+devImports: []
