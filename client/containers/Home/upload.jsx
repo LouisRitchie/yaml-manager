@@ -9,7 +9,7 @@ export default class Upload extends React.Component {
         <form action="http://localhost:8081/upload" method="post">
           Name: <input type="text" name="name" /><br />
           Email: <input type="email" name="email" /><br />
-          Files: <input type="file" name="files" /><br /><br />
+          Files: <input type="file" name="file" /><br /><br />
           <input type="submit" value="Submit" />
         </form>
       </div>

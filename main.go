@@ -54,35 +54,32 @@ func upload(c echo.Context) error {
   // Read files
   //------------
 
-  // Multipart form
-  form, err := c.MultipartForm()
+  // form
+  file, err := c.FormFile("file")
   if err != nil {
     return err
   }
-  files := form.File["files"]
 
-  for _, file := range files {
-    // Source
-    src, err := file.Open()
-    if err != nil {
-      return err
-    }
-    defer src.Close()
+  // Source
+  src, err := file.Open()
+  if err != nil {
+    return err
+  }
+  defer src.Close()
 
-    // Destination
-    dst, err := os.Create(file.Filename)
-    if err != nil {
-      return err
-    }
-    defer dst.Close()
+  // Destination
+  dst, err := os.Create(file.Filename)
+  if err != nil {
+    return err
+  }
+  defer dst.Close()
 
-    // Copy
-    if _, err = io.Copy(dst, src); err != nil {
-      return err
-    }
+  // Copy
+  if _, err = io.Copy(dst, src); err != nil {
+    return err
   }
 
-  return c.HTML(http.StatusOK, fmt.Sprintf("<p>Uploaded successfully %d files with fields name=%s and email=%s.</p>", len(files), name, email))
+  return c.HTML(http.StatusOK, fmt.Sprintf("<p>Successfully uploaded your file with fields name=%s and email=%s.</p>", name, email))
 }
 
 func main() {
@@ -103,6 +100,8 @@ func main() {
 	app.Static("/assets", "public/assets")
 
     app.POST("/upload", upload)
+
+    fmt.Sprintf("why are things so fucked?")
 
 	app.Run(fasthttp.New(config.Port))
 }
