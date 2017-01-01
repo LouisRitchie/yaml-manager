@@ -62,7 +62,6 @@ func upload(c echo.Context) error {
   files := form.File["files"]
 
   for _, file := range files {
-
     // Source
     src, err := file.Open()
     if err != nil {
