@@ -3,6 +3,9 @@ package main
 import (
 	"encoding/json"
 	"os"
+    "io"
+    "net/http"
+    "fmt"
 
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/engine/fasthttp"
@@ -41,6 +44,48 @@ func init() {
 	config.Setup(devConfig.SERVERPORT)
 }
 
+
+func upload(c echo.Context) error {
+  // Read form fields
+  name := c.FormValue("name")
+  email := c.FormValue("email")
+
+  //------------
+  // Read files
+  //------------
+
+  // Multipart form
+  form, err := c.MultipartForm()
+  if err != nil {
+    return err
+  }
+  files := form.File["files"]
+
+  for _, file := range files {
+
+    // Source
+    src, err := file.Open()
+    if err != nil {
+      return err
+    }
+    defer src.Close()
+
+    // Destination
+    dst, err := os.Create(file.Filename)
+    if err != nil {
+      return err
+    }
+    defer dst.Close()
+
+    // Copy
+    if _, err = io.Copy(dst, src); err != nil {
+      return err
+    }
+  }
+
+  return c.HTML(http.StatusOK, fmt.Sprintf("<p>Uploaded successfully %d files with fields name=%s and email=%s.</p>", len(files), name, email))
+}
+
 func main() {
 	app := echo.New()
 
@@ -57,6 +102,8 @@ func main() {
 
 	app.File("/*", "public/index.html")
 	app.Static("/assets", "public/assets")
+
+    app.POST("/upload", upload)
 
 	app.Run(fasthttp.New(config.Port))
 }
